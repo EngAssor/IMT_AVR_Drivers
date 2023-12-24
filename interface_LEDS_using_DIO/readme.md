@@ -12,4 +12,4 @@ fifth shape ping pong 2 : turn leds from both side until the middle .
 
 sixth shape Snake : make Leds look like growing Snake. 
 
-[![Alt text](https://img.youtube.com/vi/VID/0.jpg)](https://www.youtube.com/watch?v=-2YKGMiROYc)
+[![Alt text](https://img.youtube.com/vi/watch?v=-2YKGMiROYc/0.jpg)](https://www.youtube.com/watch?v=-2YKGMiROYc)
