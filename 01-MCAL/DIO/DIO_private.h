@@ -8,11 +8,7 @@ date : 30/10/2023
 #define DIO_PRIVATE_H_
 
 
-typedef enum
-{
-	DIO_NOK,
-	DIO_OK
-}DIO_ErroStatus;
+
 
 
 /*Registers defination*/

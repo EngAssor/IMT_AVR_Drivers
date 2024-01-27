@@ -7,6 +7,14 @@ date : 30/10/2023
 #ifndef DIO_INTERFACE_H_
 #define DIO_INTERFACE_H_
 
+typedef enum
+{
+	DIO_NOK,
+	DIO_OK
+}DIO_ErroStatus;
+
+
+
  DIO_ErroStatus DIO_enumSetPortDirection(u8 Copy_u8Port, u8 Copy_u8Direction);
  DIO_ErroStatus DIO_enumSetPortValue    (u8 Copy_u8Port, u8 Copy_u8Value    );
 
