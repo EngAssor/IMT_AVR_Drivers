@@ -1,7 +1,8 @@
-#include "LIB/STD_TYPES.h"
-#include "LIB/BIT_MATH.h"
+#include "../../LIB/STD_TYPES.h"
+#include "../../LIB/BIT_MATH.h"
 #include "DIO_private.h"
 #include "DIO_interface.h"
+
 
  DIO_ErroStatus DIO_enumSetPortDirection(u8 Copy_u8Port, u8 Copy_u8Direction)
  {
@@ -31,7 +32,7 @@
                             }
                         else if(Copy_u8Direction == DIO_INPUT)
                             {
-                                DDRC_REG=0x00;
+                                DDRB_REG=0x00;
                             }
                             else
                             {
@@ -83,14 +84,11 @@ return    LOC_enumState;
      switch(Copy_u8Port)
     {
         case DIO_PORTA : 
-                        if(Copy_u8Value == DIO_HIGH)
+                        if( Copy_u8Value >=0 && Copy_u8Value <= 0xff)
                            {
-                                PORTA_REG =0xff; 
-                           } 
-                        else if(Copy_u8Value == DIO_LOW)
-                          {  
-                                PORTA_REG=0x00;
-                          }
+                                PORTA_REG =Copy_u8Value;
+                           }
+
                           else
                           {
                             /**/
@@ -98,51 +96,41 @@ return    LOC_enumState;
                           }
                     break;
         case DIO_PORTB :
-                        if(Copy_u8Value == DIO_HIGH)
-                            {
-                                PORTB_REG =0xff; 
-                            }
-                        else if(Copy_u8Value == DIO_LOW)
-                            {
-                                PORTC_REG=0x00;
-                            }
-                            else
-                            {
-                                /**/
-                           	  LOC_enumState=DIO_NOK;
-                            }
-                    break;
-        case DIO_PORTC : 
-                        if(Copy_u8Value == DIO_HIGH)
-                            {
-                                PORTC_REG =0xff; 
-                            }
-                        else if (Copy_u8Value == DIO_LOW)
-                            {
-                                PORTC_REG=0x00;
-                            }
-                            else
-                            {
-                                /**/
-                           	  LOC_enumState=DIO_NOK;
-                            }
-                    break;
-        case DIO_PORTD : 
-                        if(Copy_u8Value == DIO_HIGH)
-                            {
-                                PORTD_REG =0xff; 
-                            }
-                        else if (Copy_u8Value==DIO_LOW)
-                            {
-                                PORTD_REG=0x00;
-                            }
-                            else
-                            {
-                                /**/
-                             	  LOC_enumState=DIO_NOK;
+        	  if( Copy_u8Value >=0 && Copy_u8Value <= 0xff)
+        	                           {
+        	                                PORTB_REG =Copy_u8Value;
+        	                           }
 
-                            }
-                    break;
+        	                          else
+        	                          {
+        	                            /**/
+        	                         	  LOC_enumState=DIO_NOK;
+        	                          }
+        	                    break;
+        case DIO_PORTC : 
+        	  if( Copy_u8Value >=0 && Copy_u8Value <= 0xff)
+        	                           {
+        	                                PORTC_REG =Copy_u8Value;
+        	                           }
+
+        	                          else
+        	                          {
+        	                            /**/
+        	                         	  LOC_enumState=DIO_NOK;
+        	                          }
+        	                    break;
+        case DIO_PORTD : 
+        	  if( Copy_u8Value >=0 && Copy_u8Value <= 0xff)
+        	                           {
+        	                                PORTD_REG =Copy_u8Value;
+        	                           }
+
+        	                          else
+        	                          {
+        	                            /**/
+        	                         	  LOC_enumState=DIO_NOK;
+        	                          }
+        	                    break;
         default:
        	  LOC_enumState=DIO_NOK;
 
@@ -293,6 +281,8 @@ return    LOC_enumState;
 	 		                            }
 	 		                        else if (Copy_u8Value==DIO_LOW)
 	 		                            {
+	 	                                CLR_BIT(PORTD_REG,Copy_u8PINNumber);
+
 	 		                            }
 	 		                            else
 	 		                            {
