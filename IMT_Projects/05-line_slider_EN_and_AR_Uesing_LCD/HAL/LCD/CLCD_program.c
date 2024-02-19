@@ -73,6 +73,15 @@ void CLCD_voidSendString(u8* string)
 
 	}
 }
+void CLCD_voidSend_AR_String(u8* string , u8 length)
+{
+
+	s8 i =length-1;
+	for(;i>=0;i--)
+	{
+		CLCD_voidSendChar(string[i]);
+	}
+}
 
 void CLCD_voidSendNumber(u64 Copy_u64Number)
 {

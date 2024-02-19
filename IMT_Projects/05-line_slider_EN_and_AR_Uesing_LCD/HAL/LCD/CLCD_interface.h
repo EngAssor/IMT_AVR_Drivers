@@ -59,5 +59,6 @@ void CLCD_voidSendString    (u8* string		  );
 void CLCD_voidSendNumber    (u64 Copy_Number  );
 void CLCD_voidSetPosition(u8 Copy_u8Row ,u8 Copy_u8Col);
 void CLCD_voidCustomChar(void);
+void CLCD_voidSend_AR_String(u8* string , u8 length);
 
 #endif /* HAL_LCD_CLCD_INTERFACE_H_ */
