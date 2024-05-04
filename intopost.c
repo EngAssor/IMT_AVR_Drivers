@@ -5,7 +5,7 @@
 struct Array
 {
     /* data */
-    u8 data[16];
+    s32 data[16];
     u8 len;
     u8 size;
 };
@@ -20,7 +20,7 @@ S_push stand for stack push
 this function doesn't retern anything and takes pointer to the struct that has the stack array
 and the value
 */
-void S_push(struct Array * A,u8 value)
+void S_push(struct Array * A,s8 value)
 {
     // make suer thta's the array isn't full
     if(A->len>=A->size)
@@ -177,11 +177,46 @@ char get_opration(struct Array  * expression)
 
         return opreation;
 }
- 
+struct Array StoIExpr(struct Array * expr)
+{   
+    struct Array S ;
+    S.len=0;
+    u8 oprand[10];
+    u8 len=0;
+    u8 i =0;
+    s32 value=0;
+    while(i<expr->len)
+    {
+        while (expr->data[i] != ';')
+        {
+           if(expr->data[i]>= '0' && expr->data[i] <= '9')
+          {  
+            oprand[len++]=expr->data[i++];   
+            
+          } 
+          else
+          {
+            i++;
+          }
+        }
+      value=stoi(oprand,len);
+      len=0;
+      i++;
+      S_push(&S,value);
+
+        
+    }
+    return S;
+}
+ float clc( struct Array * exp )
+ {
+    
+    
+ }
  int main(void)
  {
     infixtopostfix(&input,&op,&expr);
-
+    expr=StoIExpr(&expr);
     for(int i=0;i<expr.len;i++)
     {
         printf("%c",expr.data[i]);
